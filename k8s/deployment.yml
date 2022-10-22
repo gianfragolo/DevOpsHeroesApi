@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devopsheroesapi
+  labels:
+    backstage.io/kubernetes-id: devopsheroesapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devopsheroesapi
+  template:
+    metadata:
+      labels:
+        app: devopsheroesapi
+        backstage.io/kubernetes-id: devopsheroesapi
+    spec:
+      containers:
+        - image: lucamilan/devopsheroesapi:latest
+          imagePullPolicy: Always
+          name: devopsheroesapi
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Development"
+            - name: ASPNETCORE_URLS
+              value: "http://+:5000"
+          resources:
+            limits:
+              cpu: 250m
+              memory: 128Mi
+            requests:
+              cpu: 250m
+              memory: 128Mi

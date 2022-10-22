@@ -1,0 +1,84 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: "devopsheroesapi"
+  description: "DevOpsHeroesApi"
+  tags:
+    - api
+    - rest
+    - aspnet
+  annotations:
+    github.com/project-slug: gianfragolo/DevOpsHeroesApi
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/kubernetes-id: devopsheroesapi
+    backstage.io/kubernetes-namespace: lucamilan
+  links:
+    - url: https://github.com/gianfragolo/DevOpsHeroesApi
+      title: Github Repo
+      icon: github
+    - url: https://hub.docker.com/repository/docker/lucamilan/devopsheroesapi
+      title: Dockerhub
+      icon: docker
+    - url: https://cloud.okteto.com/#/spaces/lucamilan
+      title: Okteto Platform
+      icon: cloud      
+    - url: https://devopsheroesapi-lucamilan.cloud.okteto.net/swagger
+      title: Swagger
+      icon: code
+    - url: https://devopsheroesapi-lucamilan.cloud.okteto.net/swagger/v1/swagger.json
+      title: API Spec
+      icon: code
+spec:
+  type: openapi
+  owner: group:backend-api
+  system: system:payment-gateway
+  lifecycle: experimental
+  # definition:
+  #   $text: https://devopsheroesapi-lucamilan.cloud.okteto.net/swagger/v1/swagger.json
+  definition: |
+    {
+    "openapi": "3.0.1",
+    "info": {
+      "title": "DevOpsHeroesApi",
+      "version": "1.0"
+    },
+    "servers": [
+      {
+      "url": "https://devopsheroesapi-lucamilan.cloud.okteto.net/",
+      "description": "Okteto-Development"
+      }
+    ],
+    "paths": {
+      "/Rest": {
+        "get": {
+          "tags": [
+            "Rest"
+          ],
+          "operationId": "Get",
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "text/plain": {
+                  "schema": {
+                    "type": "string"
+                  }
+                },
+                "application/json": {
+                  "schema": {
+                    "type": "string"
+                  }
+                },
+                "text/json": {
+                  "schema": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": { }
+    }
